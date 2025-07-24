@@ -295,7 +295,7 @@ module "fargate_profile" {
 
 module "eks_managed_node_group" {
   source = "./modules/eks-managed-node-group"
-  version = "20.24.0" # Note - be mindful of Terraform/provider version compatibility between modules
+  # version = "20.24.0" # Note - be mindful of Terraform/provider version compatibility between modules
   for_each = { for k, v in var.eks_managed_node_groups : k => v if var.create && !local.create_outposts_local_cluster }
 
   create = try(each.value.create, true)
